@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Register</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link
+		rel="stylesheet"
+		type="text/css"
+		th:href="@{/css/style.css}"
+	>
+</head>
+
+<body>
+<div class="content">
+
+
+	<br>
+
+
+	<h5>Register</h5>
+
+
+	<br>
+
+
+	<div class="row">
+	<form
+		th:action="@{/registerForm}"
+		th:object="${userForm}"
+		method="POST"
+	>
+
+
+		<div class="row">
+
+			<div class="input-field col s12">
+				<input
+					type="email"
+					name="username"
+					th:field="*{username}"
+					th:errorClass="error-input"
+
+					required="required"
+					autofocus="autofocus"
+					id="username"
+					class="validate"
+				>
+				<label for="username">Email Address</label>
+			</div>
+
+			<span
+				th:if="${#fields.hasErrors('username')}"
+				th:errors="*{username}"
+				class="error-messages"
+			>
+			</span>
+
+		</div>
+
+
+		<div class="row">
+
+			<div class="input-field col s12">
+				<input
+					type="text"
+					name="username2"
+					th:field="*{username2}"
+					th:errorClass="error-input"
+
+					required="required"
+					autofocus="autofocus"
+					id="username"
+					class="validate"
+				>
+				<label for="username2">Name</label>
+			</div>
+
+		</div>
+
+
+		<div class="row">
+
+			<div class="input-field col s12">
+				<input
+					type="password"
+					name="password"
+					th:field="*{password}"
+					th:errorClass="error-input"
+
+					required="required"
+					autofocus="autofocus"
+					id="password"
+					class="validate"
+				>
+				<label for="password">Password</label>
+			</div>
+
+			<span
+				th:if="${#fields.hasErrors('password')}"
+				th:errors="*{password}"
+				class="error-messages"
+			>
+			</span>
+
+		</div>
+
+
+		<div class="row">
+
+			<div class="input-field col s12">
+				<input
+					type="password"
+					name="passwordConfirm"
+					th:field="*{passwordConfirm}"
+					th:errorClass="error-input"
+
+					required="required"
+					autofocus="autofocus"
+					id="passwordConfirm"
+					class="validate"
+				>
+				<label for="passwordConfirm">Password (Confirmation)</label>
+			</div>
+
+			<span
+				th:if="${#fields.hasErrors('passwordConfirm')}"
+				th:errors="*{passwordConfirm}"
+				class="error-messages"
+			>
+			</span>
+
+		</div>
+
+
+		<button type="submit" class="waves-effect waves-light btn">Register</button>
+		<a th:href="@{'/'}" class="waves-effect waves-light btn">Top</a>
+
+
+	</form>
+	</div>
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">
+	</script>
+
+</div>
+</body>
+
+</html>

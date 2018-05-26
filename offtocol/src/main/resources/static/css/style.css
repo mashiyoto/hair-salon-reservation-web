@@ -1,0 +1,25 @@
+h5 {
+	color: #008080;
+}
+
+
+p {
+	color: #008080;
+}
+
+
+.content {
+	max-width: 500px;
+	margin: auto;
+}
+
+
+.error-input {
+	border-color: red;
+	margin-left: 5px;
+}
+
+
+.error-messages {
+	color: red;
+}

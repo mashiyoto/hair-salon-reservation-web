@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+>
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="|${house.houseName} : Menu List|"></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link
+		rel="stylesheet"
+		type="text/css"
+		th:href="@{/css/style.css}"
+	>
+</head>
+
+
+
+<body>
+<div class="content" th:with="user=${#authentication.principal.user}">
+
+
+	<br>
+	<br>
+
+
+	<span th:text="${user.username2}"></span> is logging in.
+
+
+	<br>
+	<br>
+
+
+	<form th:action="@{/logout}" method="post">
+		<button type="submit" class="btn waves-effect waves-light">Log out</button>
+	</form>
+
+
+	<br>
+
+
+	<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Operation</a>
+	<ul id='dropdown1' class='dropdown-content'>
+		<li><a href="#!" th:href="@{'/houses'}">HairSalon List</a></li>
+		<li><a href="#!" th:href="@{'/userInfo'}">User Information</a></li>
+		<li><a href="#!" th:href="@{'/dash'}">Dashboard</a></li>
+	</ul>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<h5><span th:text="|${house.houseName} : Book Menu List|"></span></h5>
+
+
+	<br>
+
+
+	<table class="highlight bordered centered">
+
+		<thead>
+			<tr>
+				<th>
+					Menu
+				</th>
+				<th>
+					Price
+				</th>
+				<th>
+					Operation
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="cartItem : ${cartItems}">
+				<td>
+					<span th:text="${cartItem.goods.name}"></span>
+				</td>
+				<td>
+					<span th:text="|$ ${cartItem.goods.price}|"></span>
+				</td>
+				<td>
+					<form
+						th:action="@{'/goods/' + ${houseId}}"
+						method="post"
+					>
+						<input type="hidden" name="removedGoodsId" th:value="${cartItem.goods.goodsId}">
+						<input type="submit" name="remove" class="btn waves-effect waves-light" value="Remove">
+					</form>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+
+	<br>
+	<br>
+
+
+	<form
+		th:action="@{'/rooms/' + ${houseId}}"
+	>
+		<input type="submit" class="btn waves-effect waves-light" value="Next">
+	</form>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<h5><span th:text="|${house.houseName} : Menu List|"></span></h5>
+
+
+	<br>
+
+
+	<table class="highlight bordered centered">
+
+		<thead>
+			<tr>
+				<th>
+					Menu
+				</th>
+				<th>
+					Price
+				</th>
+				<th>
+					Operation
+				</th>
+			</tr>
+		</thead>
+
+
+		<tbody>
+			<tr th:each="goods : ${goodsList}">
+				<td>
+					<span th:text="${goods.name}"></span>
+				</td>
+				<td>
+					<span th:text="|$ ${goods.price}|"></span>
+				</td>
+				<td>
+					<form
+						th:object="${cartItemForm}"
+						th:action="@{'/goods/' + ${houseId}}"
+						method="post"
+					>
+						<input type="hidden" name="addedGoodsId" th:value="${goods.goodsId}">
+						<input type="submit" class="btn waves-effect waves-light" value="Add">
+					</form>
+
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+</div>
+</body>
+
+
+
+</html>

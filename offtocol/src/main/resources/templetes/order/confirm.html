@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>Confirm</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link
+		rel="stylesheet"
+		type="text/css"
+		th:href="@{/css/style.css}"
+	>
+</head>
+
+
+
+<body>
+<div class="content" th:with="user=${#authentication.principal.user}">
+
+
+	<br>
+	<br>
+
+
+	<span th:text="${user.username2}"></span> is logging in.
+
+
+	<br>
+	<br>
+
+
+	<form th:action="@{/logout}" method="post">
+		<button type="submit" class="btn waves-effect waves-light">Log out</button>
+	</form>
+
+
+	<br>
+
+
+	<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Operation</a>
+	<ul id='dropdown1' class='dropdown-content'>
+		<li><a href="#!" th:href="@{'/houses'}">HairSalon List</a></li>
+		<li><a href="#!" th:href="@{'/userInfo'}">User Information</a></li>
+		<li><a href="#!" th:href="@{'/dash'}">Dashboard</a></li>
+	</ul>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<h5>Confirm</h5>
+
+
+	<br>
+
+
+	<table class="highlight">
+
+		<thead>
+			<tr>
+				<th>
+					HairSalon Name
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="cartHouse : ${cartHouses}">
+				<td>
+					<span th:text="${cartHouse.house.houseName}"></span>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+
+	<br>
+
+
+	<table class="highlight">
+
+		<thead>
+			<tr>
+				<th>
+					Stylist Name
+				</th>
+				<th>
+					Date
+				</th>
+				<th>
+					Time Zone
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="cartRoomAndDate : ${cartCases}">
+				<td>
+					<span th:text="${cartRoomAndDate.room.roomName}"></span>
+				</td>
+				<td>
+					<span th:text="${cartRoomAndDate.date}"></span>
+				</td>
+				<td>
+					<span th:text="${cartRoomAndDate.startTime}"></span>~<span th:text="${cartRoomAndDate.endTime}"></span>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+
+	<br>
+
+
+	<table class="highlight">
+
+		<thead>
+			<tr>
+				<th>
+					Menu Name
+				</th>
+				<th>
+					Price
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="cartItem : ${cartItems}">
+				<td>
+					<span th:text="${cartItem.goods.name}"></span>
+				</td>
+				<td>
+					<span th:text="|$ ${cartItem.goods.price}|"></span>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+
+	<br>
+
+
+	Total : <span th:text="|$ ${amount}|"></span>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<form th:action="@{/confirm}" method="post">
+		<input type="hidden" name="signature" th:value="${sig}">
+		<input type="submit" class="btn waves-effect waves-light" value="Reserve">
+	</form>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">
+	</script>
+
+</div>
+</body>
+
+
+
+</html>

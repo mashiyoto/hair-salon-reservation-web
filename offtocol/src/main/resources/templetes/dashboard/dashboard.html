@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+>
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link
+		rel="stylesheet"
+		type="text/css"
+		th:href="@{/css/style.css}"
+	>
+</head>
+
+
+
+<body>
+<div class="content" th:with="user=${#authentication.principal.user}">
+
+
+	<br>
+	<br>
+
+
+	<span th:text="${user.username2}"></span> is logging in.
+
+
+	<br>
+	<br>
+
+
+	<form th:action="@{/logout}" method="post">
+		<button type="submit" class="btn waves-effect waves-light">Log out</button>
+	</form>
+
+
+	<br>
+
+
+	<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Operation</a>
+	<ul id='dropdown1' class='dropdown-content'>
+		<li><a href="#!" th:href="@{'/houses'}">HairSalon List</a></li>
+		<li><a href="#!" th:href="@{'/userInfo'}">User Information</a></li>
+	</ul>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<h5>Dashboard</h5>
+
+
+	<br>
+
+
+	<ul>
+		<li th:each="reservation : ${reservations}">
+
+			<table class="bordered highlight">
+
+				<tbody>
+
+					<tr>
+						<td>
+							Reservation Number :
+						</td>
+						<td>
+							<span th:text="${reservation.uuid}"></span>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Reservation Name :
+						</td>
+						<td>
+							<span th:text="${reservation.user.username2}"></span>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							HairSalon Name :
+						</td>
+						<td>
+							<span th:text="${reservation.reservableRoom.meetingRoom.house.houseName}"></span>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Stylist Name :
+						</td>
+						<td>
+							<span th:text="${reservation.reservableRoom.meetingRoom.roomName}"></span>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Date :
+						</td>
+						<td>
+							<span th:text="${reservation.reservableRoom.reservableRoomId.reservedDate}"></span>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Time Zone :
+						</td>
+						<td>
+							<span th:text="${reservation.startTime}"></span> ~ <span th:text="${reservation.endTime}"></span>
+						</td>
+					</tr>
+
+				</tbody>
+
+			</table>
+
+
+			<br>
+
+
+			<a
+				th:href="@{
+					'/menu/' + ${reservation.reservationId}
+				}"
+				th:text="Menu"
+			>
+			</a>
+
+
+			<br>
+			<br>
+			<br>
+
+
+		</li>
+	</ul>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+</div>
+</body>
+
+
+
+</html>

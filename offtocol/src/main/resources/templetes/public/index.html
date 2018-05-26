@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>Top</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<link
+		rel="stylesheet"
+		type="text/css"
+		th:href="@{/css/style.css}"
+	>
+</head>
+
+
+
+<body>
+<div class="content">
+
+
+	<br>
+
+
+	<h5>Top</h5>
+
+
+	<br>
+
+
+	<a th:href="@{'/loginForm'}" class="waves-effect waves-light btn">Log In</a>
+
+	<br>
+	<br>
+
+	<a th:href="@{'/registerForm'}" class="waves-effect waves-light btn">Register</a>
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">
+	</script>
+
+</div>
+</body>
+
+
+
+</html>

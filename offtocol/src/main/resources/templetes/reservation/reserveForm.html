@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="|
+		${#temporals.format(date, 'yyyy/M/d')} : ${room.roomName}
+	|">
+	</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link
+		rel="stylesheet"
+		type="text/css"
+		th:href="@{/css/style.css}"
+	>
+</head>
+
+
+
+<body>
+<div class="content" th:with="user=${#authentication.principal.user}">
+
+
+	<br>
+	<br>
+
+
+	<span th:text="${user.username2}"></span> is logging in.
+
+
+	<br>
+	<br>
+
+
+	<form th:action="@{/logout}" method="post">
+		<button type="submit" class="btn waves-effect waves-light">Log out</button>
+	</form>
+
+
+	<br>
+
+
+	<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Operation</a>
+	<ul id='dropdown1' class='dropdown-content'>
+		<li><a href="#!" th:href="@{'/houses'}">HairSalon List</a></li>
+		<li><a href="#!" th:href="@{'/userInfo'}">User Information</a></li>
+		<li><a href="#!" th:href="@{'/dash'}">Dashboard</a></li>
+	</ul>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<h5><span th:text="|${room.house.houseName} : ${room.roomName}|"></span></h5>
+
+
+	<div class="row">
+	<form
+		th:object="${reservationForm}"
+		th:action="@{
+			'/reservations/' + ${date} + '/' + ${roomId}
+		}"
+		method="post"
+		class="col s12"
+	>
+
+
+		<br>
+
+
+		<div>
+
+			Date :
+
+			<span th:text="${#temporals.format(date, 'yyyy/M/d')}"></span>
+
+		</div>
+
+
+		<br>
+
+
+		<div>
+
+			Time Zone : 1 Hour from
+
+			<br>
+			<br>
+
+			<div class="row">
+
+				<div class="col s1">
+				</div>
+
+				<div class="col s4">
+					<label>Start Time</label>
+					<select th:field="*{startTime}" class="browser-default">
+						<option
+							th:each="time : ${timeList}"
+							th:text="${time}"
+							th:value="${time}"
+						>
+						</option>
+					</select>
+				</div>
+
+				<div class="col s7">
+				</div>
+
+			</div>
+
+			<span
+				th:if="${error != null}"
+				th:text="${error}"
+				style="color:red"
+			></span>
+
+		</div>
+
+
+		<br>
+
+
+		<div>
+			<button type="submit" class="btn waves-effect waves-light">Confirm</button>
+		</div>
+
+
+	</form>
+	</div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+</div>
+</body>
+
+
+
+</html>

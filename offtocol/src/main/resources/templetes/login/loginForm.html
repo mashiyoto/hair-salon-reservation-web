@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>Log in</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link
+		rel="stylesheet"
+		type="text/css"
+		th:href="@{/css/style.css}"
+	>
+</head>
+
+
+
+<body>
+<div class="content">
+
+
+	<br>
+
+
+	<h5>Log in</h5>
+
+
+	<br>
+
+
+	<div class="row">
+	<form
+		th:action="@{/login}"
+		method="POST"
+		class="col s12"
+	>
+
+
+		<div class="row">
+			<div class="input-field col s12">
+				<input
+					type="email"
+					name="username"
+					required="required"
+					autofocus="autofocus"
+					id="username"
+					class="validate"
+				>
+				<label for="username">Email Address</label>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="input-field col s12">
+				<input
+					type="password"
+					name="password"
+					required="required"
+					autofocus="autofocus"
+					id="password"
+					class="validate"
+				>
+				<label for="password">Password</label>
+			</div>
+		</div>
+
+
+		<button type="submit" class="btn waves-effect waves-light">Log in</button>
+		<a th:href="@{'/'}" class="waves-effect waves-light btn">Top</a>
+
+
+		<br>
+		<br>
+
+
+		<span
+			th:if="${param.error}"
+			style="color:red"
+		>
+			Please check the input and resend.
+		</span>
+
+
+	</form>
+	</div>
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">
+	</script>
+
+</div>
+</body>
+
+
+
+</html>

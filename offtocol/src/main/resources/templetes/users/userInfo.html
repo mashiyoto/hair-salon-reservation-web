@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+>
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>User Information</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link
+		rel="stylesheet"
+		type="text/css"
+		th:href="@{/css/style.css}"
+	>
+</head>
+
+
+
+<body>
+<div class="content" th:with="user=${#authentication.principal.user}">
+
+
+	<br>
+	<br>
+
+
+	<span th:text="${user.username2}"></span> is logging in.
+
+
+	<br>
+	<br>
+
+
+	<form th:action="@{/logout}" method="post">
+		<button type="submit" class="btn waves-effect waves-light">Log out</button>
+	</form>
+
+
+	<br>
+
+
+	<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Operation</a>
+	<ul id='dropdown1' class='dropdown-content'>
+		<li><a href="#!" th:href="@{'/houses'}">HairSalon List</a></li>
+		<li><a href="#!" th:href="@{'/dash'}">Dashboard</a></li>
+	</ul>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<h5>User Information</h5>
+
+
+	<br>
+
+
+	<table class="bordered highlight">
+
+		<tbody>
+
+			<tr>
+				<td>
+					Name :
+				</td>
+				<td>
+					<span th:text="${user.username2}"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Email Address :
+				</td>
+				<td>
+					<span th:text="${user.username}"></span>
+				</td>
+			</tr>
+
+		</tbody>
+
+	</table>
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+</div>
+</body>
+
+
+
+</html>
