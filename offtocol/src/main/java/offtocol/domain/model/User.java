@@ -17,12 +17,6 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 
-	public enum RoleName {
-		USER, OWNER, ADMIN
-	}
-
-
-
 	@Id
 	private String username;
 
@@ -32,8 +26,8 @@ public class User implements Serializable {
 
 	private String passwordConfirm;
 
-	@Enumerated(EnumType.STRING)
-	private RoleName roleName;
+	//USER, OWNER, ADMIN
+	private String roleName;
 
 
 }

@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 public class UserController {
 
 
+
 	@Autowired
 	UserService userService;
 
@@ -31,11 +32,13 @@ public class UserController {
 	private UserValidator userValidator;
 
 
+
 	@GetMapping
 	String register(Model model) {
 		model.addAttribute("userForm", new User());
 		return "users/registerForm";
 	}
+
 
 
 	@PostMapping
@@ -45,22 +48,30 @@ public class UserController {
 		Model model
 	) {
 
+
 		userValidator.validate(userForm, result);
 
 		if(result.hasErrors()) {
 			return "users/registerForm";
 		}
 
+
+		userForm.setRoleName("USER");
+
 		userService.save(userForm);
+
 
 		securityService.autologin(
 			userForm.getUsername(),
 			userForm.getPasswordConfirm()
 		);
 
+
 		return "redirect:/houses";
 
+
 	}
+
 
 
 }
