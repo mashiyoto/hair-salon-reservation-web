@@ -45,9 +45,9 @@ Username: HairSalon_C
     --- Role: OWNER
 
 
-Email Address: e@a.com
+Username: Offtocol
 
-    --- Username: Offtocol
+    --- Email Address: e@a.com
 
     --- Password: demo
 
