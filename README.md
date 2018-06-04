@@ -7,49 +7,51 @@ By this website,  a user can select a hair salon from the list of hair salons an
 Database name: offtocol
 
 
-Email Address: a@a.com
+
 
 Username: Sara
 
-Password: demo
+    --- Email Address: a@a.com
 
-Role: USER
+    --- Password: demo
 
+    --- Role: USER
 
-EmailAddress: b@a.com
 
 Username: HairSalon_A
 
-Password: demo
+    --- EmailAddress: b@a.com
 
-Role: OWNER
+    --- Password: demo
 
+    --- Role: OWNER
 
-Email Address: c@a.com
 
 Username: HairSalon_B
 
-Password: demo
+    --- Email Address: c@a.com
 
-Role: OWNER
+    --- Password: demo
 
+    --- Role: OWNER
 
-Email Address: d@a.com
 
 Username: HairSalon_C
 
-Password: demo
+    --- Email Address: d@a.com
 
-Role: OWNER
+    --- Password: demo
+
+    --- Role: OWNER
 
 
 Email Address: e@a.com
 
-Username: Offtocol
+    --- Username: Offtocol
 
-Password: demo
+    --- Password: demo
 
-Role: ADMIN
+    --- Role: ADMIN
 
 
 
