@@ -8,28 +8,47 @@ Database name: offtocol
 
 
 Email Address: a@a.com
+
 Username: Sara
+
 Password: demo
+
 Role: USER
 
+
 EmailAddress: b@a.com
+
 Username: HairSalon_A
+
 Password: demo
+
 Role: OWNER
+
 
 Email Address: c@a.com
+
 Username: HairSalon_B
+
 Password: demo
+
 Role: OWNER
+
 
 Email Address: d@a.com
+
 Username: HairSalon_C
+
 Password: demo
+
 Role: OWNER
 
+
 Email Address: e@a.com
+
 Username: Offtocol
+
 Password: demo
+
 Role: ADMIN
 
 
